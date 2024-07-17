@@ -7,28 +7,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
-	/* assign `input-listener` to all pointing devices */
-	/* &glidepoint0 on central, &glidepoint1 on peripheral */
-    tpad_central_listener {
-        compatible = "zmk,input-listener";
-        device = <&glidepoint0>;
-        y-invert;
-        scale-multiplier = <3>;
-        // xy-swap;
-        // x-invert;
-	};
-
-    tpad_peripheral_listener {
-        compatible = "zmk,input-listener";
-        device = <&glidepoint1>;
-        y-invert;
-        scale-multiplier = <3>;
-        // xy-swap;
-        // x-invert;
-	};
-};
-
-/ {
     chosen {
         zephyr,display = &oled;
         zmk,kscan = &kscan0;
