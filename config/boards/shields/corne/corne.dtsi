@@ -63,10 +63,11 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 };
 
 &pro_micro_i2c {
-    status = "okay";
+    status = "disabled";
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
+        status= "disabled";
         reg = <0x3c>;
         width = <128>;
         height = <32>;
@@ -83,35 +84,17 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 };
 
 
-&pinctrl {
-    i2c0_default: i2c0_default {
-    group1 {
-      psels = <NRF_PSEL(TWIM_SDA, 1, 0)>,
-          <NRF_PSEL(TWIM_SCL, 0, 24)>;
-    };
-  };
-
-  i2c0_sleep: i2c0_sleep {
-    group1 {
-      psels = <NRF_PSEL(TWIM_SDA, 1, 0)>,
-          <NRF_PSEL(TWIM_SCL, 0, 24)>;
-      low-power-enable;
-    };
-  };
-};
-
-
-&i2c0 {
+&pro_micro_i2c {
     status = "disabled";
-    glidepoint0: glidepoint@2a {
-        compatible = "cirque,pinnacle";
-        reg = <0x2a>;
-        status = "disabled";
-        dr-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH)>;
 
+    glidepoint0:  glidepoint@2a {
+        compatible = "cirque,pinnacle";
+        status= "disabled";
+        reg = <0x2a>;
+        dr-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH)>;
         sensitivity = "1x";
         sleep;
-        // no-taps;
     };
-
 };
+
+
