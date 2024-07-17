@@ -24,3 +24,9 @@
         , <&pro_micro 21 GPIO_ACTIVE_HIGH>
         ;
 };
+&i2c0 {
+    status = "okay";
+    glidepoint0: glidepoint@2a {
+        status = "okay";
+    };
+};
